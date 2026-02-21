@@ -5,6 +5,9 @@ extends Node2D
 @onready var dice := $Dice
 @export var game_spaces : Array[Spot]
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
+#@onready var effect_pop_up_box : CenterContainer = $"."
+
+
 
 
 var place : int = 1
