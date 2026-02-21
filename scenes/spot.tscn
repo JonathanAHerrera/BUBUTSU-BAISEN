@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bmnpmaofdwoi1"]
+
+[ext_resource type="Script" uid="uid://h6xg044rn4te" path="res://scripts/spot.gd" id="1_rj7cy"]
+
+[node name="Start" type="Marker2D" unique_id=601622849]
+gizmo_extents = 31.9
+script = ExtResource("1_rj7cy")

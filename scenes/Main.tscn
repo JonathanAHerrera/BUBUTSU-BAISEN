@@ -1,29 +1,9 @@
-[gd_scene format=3 uid="uid://cq6bgnqan74gb"]
+[gd_scene format=3 uid="uid://dif7x044yw3jo"]
 
-[ext_resource type="PackedScene" uid="uid://cm174vikj7tr2" path="res://scenes/StartMenu.tscn" id="1_elqb8"]
-[ext_resource type="PackedScene" uid="uid://iq8cavyvuavf" path="res://scenes/WinScreen.tscn" id="2_0bbpv"]
-[ext_resource type="Script" uid="uid://dc2yb3t6upfow" path="res://scripts/start_menu.gd" id="2_rarhs"]
-[ext_resource type="PackedScene" uid="uid://pbc7gw4bj6m8" path="res://scenes/LoseScreen.tscn" id="3_rarhs"]
+[ext_resource type="Texture2D" uid="uid://d27wfeewo70lu" path="res://assets/pink piece.png" id="1_elqb8"]
 
 [node name="Main" type="Node2D" unique_id=820570662]
 
-[node name="Board" type="Node2D" parent="." unique_id=366729351]
-
-[node name="UI" type="CanvasLayer" parent="." unique_id=1995008820]
-
-[node name="Control" type="Control" parent="UI" unique_id=1628607452]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="StartMenu" parent="." unique_id=1396551517 instance=ExtResource("1_elqb8")]
-script = ExtResource("2_rarhs")
-
-[node name="WinScreen" parent="." unique_id=915477520 instance=ExtResource("2_0bbpv")]
-
-[node name="LoseScreen" parent="." unique_id=623420723 instance=ExtResource("3_rarhs")]
-
-[node name="GameManager" type="MenuBar" parent="." unique_id=2142874437]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="PinkPiece" type="Sprite2D" parent="." unique_id=2108358959]
+position = Vector2(-32, 20)
+texture = ExtResource("1_elqb8")

@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://cvompiksu4o5a"]
+
+[ext_resource type="Script" uid="uid://b15kg5avejg8t" path="res://scripts/main.gd" id="1_bxpt3"]
+[ext_resource type="Texture2D" uid="uid://d27wfeewo70lu" path="res://assets/pink piece.png" id="1_kcba3"]
+[ext_resource type="Texture2D" uid="uid://cvrr2tdxo1upv" path="res://assets/art/board.png" id="3_83al3"]
+[ext_resource type="PackedScene" uid="uid://byj4875ygyky0" path="res://scenes/dice.tscn" id="4_a3yu8"]
+[ext_resource type="PackedScene" uid="uid://bmnpmaofdwoi1" path="res://scenes/spot.tscn" id="4_k8nbr"]
+
+[node name="Main" type="Node2D" unique_id=464376003 node_paths=PackedStringArray("game_spaces")]
+script = ExtResource("1_bxpt3")
+game_spaces = [NodePath("Node/Start"), NodePath("Node/Start2"), NodePath("Node/Start3"), NodePath("Node/Start4"), NodePath("Node/Start5"), NodePath("Node/Start6"), NodePath("Node/Start7"), NodePath("Node/Start8"), NodePath("Node/Start9"), NodePath("Node/Start10"), NodePath("Node/Start11"), NodePath("Node/Start12"), NodePath("Node/Start13"), NodePath("Node/Start14"), NodePath("Node/Start15"), NodePath("Node/Start16"), NodePath("Node/Start17")]
+
+[node name="Board" type="Sprite2D" parent="." unique_id=1451328302]
+position = Vector2(320, 180)
+texture = ExtResource("3_83al3")
+
+[node name="PinkPiece" type="Sprite2D" parent="." unique_id=177621968]
+z_index = 5
+texture_filter = 1
+position = Vector2(64, 160)
+texture = ExtResource("1_kcba3")
+
+[node name="Node" type="Node" parent="." unique_id=1859258189]
+
+[node name="Start" parent="Node" unique_id=601622849 instance=ExtResource("4_k8nbr")]
+position = Vector2(64, 161)
+
+[node name="Start2" parent="Node" unique_id=762888996 instance=ExtResource("4_k8nbr")]
+position = Vector2(134, 158)
+
+[node name="Start3" parent="Node" unique_id=377897363 instance=ExtResource("4_k8nbr")]
+position = Vector2(192, 158)
+
+[node name="Start4" parent="Node" unique_id=307496671 instance=ExtResource("4_k8nbr")]
+position = Vector2(258, 159)
+
+[node name="Start5" parent="Node" unique_id=1762543209 instance=ExtResource("4_k8nbr")]
+position = Vector2(323, 155)
+
+[node name="Start6" parent="Node" unique_id=692430712 instance=ExtResource("4_k8nbr")]
+position = Vector2(387, 159)
+direction = 1
+
+[node name="Start7" parent="Node" unique_id=1361626655 instance=ExtResource("4_k8nbr")]
+position = Vector2(452, 160)
+direction = 2
+
+[node name="Start8" parent="Node" unique_id=292664461 instance=ExtResource("4_k8nbr")]
+position = Vector2(516, 163)
+
+[node name="Start9" parent="Node" unique_id=1537698590 instance=ExtResource("4_k8nbr")]
+position = Vector2(517, 223)
+
+[node name="Start10" parent="Node" unique_id=1992958126 instance=ExtResource("4_k8nbr")]
+position = Vector2(513, 290)
+direction = 1
+
+[node name="Start11" parent="Node" unique_id=969769501 instance=ExtResource("4_k8nbr")]
+position = Vector2(445, 286)
+direction = 2
+
+[node name="Start12" parent="Node" unique_id=1094675348 instance=ExtResource("4_k8nbr")]
+position = Vector2(385, 288)
+
+[node name="Start13" parent="Node" unique_id=1526964276 instance=ExtResource("4_k8nbr")]
+position = Vector2(321, 290)
+
+[node name="Start14" parent="Node" unique_id=1288548457 instance=ExtResource("4_k8nbr")]
+position = Vector2(255, 290)
+
+[node name="Start15" parent="Node" unique_id=1689365293 instance=ExtResource("4_k8nbr")]
+position = Vector2(189, 290)
+
+[node name="Start16" parent="Node" unique_id=1986514275 instance=ExtResource("4_k8nbr")]
+position = Vector2(132, 295)
+
+[node name="Start17" parent="Node" unique_id=2062802881 instance=ExtResource("4_k8nbr")]
+position = Vector2(64, 296)
+
+[node name="Dice" parent="." unique_id=357203752 instance=ExtResource("4_a3yu8")]
+position = Vector2(77, 65)
+
+[node name="Timer" type="Timer" parent="." unique_id=1681152208]
+wait_time = 0.802
+one_shot = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=274105271]
+follow_viewport_enabled = true
+
+[connection signal="dice_has_rolled" from="Dice" to="." method="_on_dice_dice_has_rolled"]

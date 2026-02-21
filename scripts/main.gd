@@ -1,0 +1,65 @@
+extends Node2D
+
+@onready var pink_piece : Sprite2D = $PinkPiece
+@onready var timer := $Timer
+@onready var dice := $Dice
+@export var game_spaces : Array[Spot]
+@onready var canvas_layer: CanvasLayer = $CanvasLayer
+
+
+var place : int = 1
+var number_of_spaces : int
+
+func _ready() -> void:
+	number_of_spaces = game_spaces.size()
+	
+
+func _on_dice_dice_has_rolled(roll: Variant) -> void:
+	# for testing
+	roll = 6
+	while roll != 0:
+		await move( place )
+		place += 1
+		roll -= 1
+	if roll == 0:
+		print('checking')
+		print( game_spaces )
+		print( place )
+		print(game_spaces[ place ].direction)
+		print(Direction.SpaceType.BACK)
+		if game_spaces[ place - 1 ].direction == Direction.SpaceType.BACK:
+			var two_spaces_back = place - 3
+			print('back')
+			while place != two_spaces_back:
+					place -= 1
+					await move( place )
+		if game_spaces[ place - 1 ].direction == Direction.SpaceType.TOOL:
+			print('tool')
+			#Load it
+			var effect_box = preload("res://scenes/EffectPopUpBox.tscn")
+			#Instance it
+			var effect = effect_box.instantiate()
+			#Add it
+			add_child(effect)
+			#Position it
+		if game_spaces[ place - 1 ].direction == Direction.SpaceType.EFFECT:
+			print('effect')
+			#Load it
+			var effect_box = preload("res://scenes/EffectPopUpBox.tscn")
+			#Instance it
+			var effect = effect_box.instantiate()
+			#Add it
+			canvas_layer.add_child(effect)
+			#Position it
+			
+			
+		
+		
+func move( place ) -> void:
+	var tween = create_tween()
+	tween.tween_property(pink_piece, "position", game_spaces[ place ].position, 1 )
+	timer.start()
+	await timer.timeout
+
+func _on_timer_timeout() -> void:
+	pass # Replace with function body.

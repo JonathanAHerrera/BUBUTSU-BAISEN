@@ -1,0 +1,160 @@
+[gd_scene format=3 uid="uid://byj4875ygyky0"]
+
+[ext_resource type="Texture2D" uid="uid://dpugj1ojkjf5n" path="res://assets/art/dice.png" id="1_27nyo"]
+[ext_resource type="Script" uid="uid://bakhhwxh6oys8" path="res://scripts/dice.gd" id="2_mg5ex"]
+
+[sub_resource type="Animation" id="Animation_27nyo"]
+resource_name = "1"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_o1ht6"]
+resource_name = "2"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_yk8ku"]
+resource_name = "3"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_tannu"]
+resource_name = "4"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_pb8pk"]
+resource_name = "5"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_ocjtb"]
+resource_name = "6"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+
+[sub_resource type="Animation" id="Animation_mg5ex"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_oi81l"]
+resource_name = "roll"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.19999999, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [5, 1, 4, 2, 0, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o1ht6"]
+_data = {
+&"1": SubResource("Animation_27nyo"),
+&"2": SubResource("Animation_o1ht6"),
+&"3": SubResource("Animation_yk8ku"),
+&"4": SubResource("Animation_tannu"),
+&"5": SubResource("Animation_pb8pk"),
+&"6": SubResource("Animation_ocjtb"),
+&"RESET": SubResource("Animation_mg5ex"),
+&"roll": SubResource("Animation_oi81l")
+}
+
+[node name="Dice" type="Sprite2D" unique_id=357203752]
+position = Vector2(86, 61)
+texture = ExtResource("1_27nyo")
+hframes = 6
+script = ExtResource("2_mg5ex")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=191012657]
+libraries/ = SubResource("AnimationLibrary_o1ht6")
+autoplay = &"1"
+
+[node name="Timer" type="Timer" parent="." unique_id=917160365]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
