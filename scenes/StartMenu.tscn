@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://cm174vikj7tr2"]
+
+[node name="StartMenu" type="Control" unique_id=1396551517]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="." unique_id=498333305]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Center" type="CenterContainer" parent="." unique_id=1690498068]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Box" type="VBoxContainer" parent="Center" unique_id=318406479]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="Title" type="Label" parent="Center/Box" unique_id=524685512]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 90
+text = "Bubutsu Baisen"
+
+[node name="Spacer" type="Control" parent="Center/Box" unique_id=1742806889]
+layout_mode = 2
+
+[node name="QuitButton" type="Button" parent="Center/Box" unique_id=2105992273]
+layout_mode = 2
+text = "Quit"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=852490069]
