@@ -5,7 +5,14 @@ signal effect_space_landed( effect_card )
 signal tool_box_closed( tool )
 signal effect_box_closed( money, spaces )
 
-var in_game_money = 10
+
+var red_dice_roll
+var blue_dice_roll
+var off_white_dice_roll
+
+var out_of_game_money = 50
+var in_game_money = 15
+var geto_money = 50
 
 var normalEffects = [
 	['You see a child selling hot cheetos and feel inspired by his hustle mentality. Move Forward 1!', 0, 1],
