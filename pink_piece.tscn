@@ -18,9 +18,9 @@
 [ext_resource type="Texture2D" uid="uid://dfidgbgpuk11a" path="res://assets/art/DieButton.jpeg" id="14_ngatk"]
 [ext_resource type="Script" uid="uid://b11gd26ygky60" path="res://scenes/blue_dice.gd" id="14_rm48y"]
 [ext_resource type="Script" uid="uid://dk1cdr6lnyqag" path="res://scenes/red_dice.gd" id="15_w2lmc"]
-[ext_resource type="PackedScene" path="res://scenes/StartMenu.tscn" id="19_t48r6"]
-[ext_resource type="PackedScene" path="res://scenes/LoseScreen.tscn" id="20_o1od4"]
-[ext_resource type="PackedScene" path="res://scenes/WinScreen.tscn" id="21_pou7b"]
+[ext_resource type="PackedScene" uid="uid://b6jioqgiie5l" path="res://scenes/StartMenu.tscn" id="19_t48r6"]
+[ext_resource type="PackedScene" uid="uid://cvwm7jwr4l8vg" path="res://scenes/LoseScreen.tscn" id="20_o1od4"]
+[ext_resource type="PackedScene" uid="uid://46ira3mnrrkd" path="res://scenes/WinScreen.tscn" id="21_pou7b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ngatk"]
 atlas = ExtResource("14_ngatk")
@@ -161,15 +161,17 @@ text = "0"
 script = ExtResource("13_kw7oy")
 
 [node name="StartMenu" parent="CanvasLayer" unique_id=1396551517 instance=ExtResource("19_t48r6")]
-visible = false
+z_index = 50
 
 [node name="LoseScreen" parent="CanvasLayer" unique_id=915477520 instance=ExtResource("20_o1od4")]
 visible = false
+z_index = 49
 
 [node name="WinScreen" parent="CanvasLayer" unique_id=1612274989 instance=ExtResource("21_pou7b")]
 visible = false
+z_index = 49
 
 [connection signal="dice_has_rolled" from="RedDie" to="." method="_on_dice_dice_has_rolled"]
-[connection signal="button_down" from="CanvasLayer/TextureButton" to="RedDie" method="_on_texture_button_button_down"]
-[connection signal="button_down" from="CanvasLayer/TextureButton" to="BlueDie" method="_on_texture_button_button_down"]
 [connection signal="button_down" from="CanvasLayer/TextureButton" to="OffWhiteDie" method="_on_texture_button_button_down"]
+[connection signal="button_down" from="CanvasLayer/TextureButton" to="BlueDie" method="_on_texture_button_button_down"]
+[connection signal="button_down" from="CanvasLayer/TextureButton" to="RedDie" method="_on_texture_button_button_down"]

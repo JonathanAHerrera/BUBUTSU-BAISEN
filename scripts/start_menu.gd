@@ -1,11 +1,8 @@
 extends Control
+@onready var start_menu: Control = $"."
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _on_buy_in_button_down() -> void:
+	SignalBus.out_of_game_money -= 15
+	start_menu.visible = false
+	

@@ -1,4 +1,9 @@
-[gd_scene format=3 uid="uid://cm174vikj7tr2"]
+[gd_scene format=3 uid="uid://b6jioqgiie5l"]
+
+[ext_resource type="Script" uid="uid://dvi64b2twnbf2" path="res://scenes/main_menu_bands.gd" id="1_fb70i"]
+[ext_resource type="Script" uid="uid://dc2yb3t6upfow" path="res://scripts/start_menu.gd" id="1_fgoeh"]
+[ext_resource type="Theme" uid="uid://cddh3712bf01f" path="res://assets/DefaultTheme.tres" id="1_kmax6"]
+[ext_resource type="Script" uid="uid://b65uwsdca8mv7" path="res://scripts/buy_in.gd" id="4_kcs48"]
 
 [node name="StartMenu" type="Control" unique_id=1396551517]
 layout_mode = 3
@@ -7,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_fgoeh")
 
 [node name="Background" type="ColorRect" parent="." unique_id=498333305]
 layout_mode = 1
@@ -29,6 +35,13 @@ layout_mode = 2
 theme_override_constants/separation = 24
 alignment = 1
 
+[node name="Label" type="Label" parent="Center/Box" unique_id=556961759]
+z_index = 51
+layout_mode = 2
+theme = ExtResource("1_kmax6")
+horizontal_alignment = 1
+script = ExtResource("1_fb70i")
+
 [node name="Title" type="Label" parent="Center/Box" unique_id=524685512]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -39,8 +52,11 @@ text = "Bubutsu Baisen"
 [node name="Spacer" type="Control" parent="Center/Box" unique_id=1742806889]
 layout_mode = 2
 
-[node name="QuitButton" type="Button" parent="Center/Box" unique_id=2105992273]
+[node name="BuyIn" type="Button" parent="Center/Box" unique_id=2105992273]
 layout_mode = 2
-text = "Quit"
+text = "15 Band Buy in"
+script = ExtResource("4_kcs48")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=852490069]
+
+[connection signal="button_down" from="Center/Box/BuyIn" to="." method="_on_buy_in_button_down"]

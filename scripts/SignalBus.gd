@@ -4,6 +4,7 @@ signal tool_space_landed( tool_card )
 signal effect_space_landed( effect_card )
 signal tool_box_closed( tool )
 signal effect_box_closed( money, spaces )
+signal reset_game
 
 
 var red_dice_roll

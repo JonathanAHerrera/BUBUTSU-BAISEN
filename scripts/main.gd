@@ -22,6 +22,7 @@ var run_emit_effect_space := false
 var run_tool_close := false
 var gojo_turn := true
 
+@export var game_ended = false
 
 var place : int = -9999
 var pink_place : int = 0
@@ -32,13 +33,13 @@ func _ready() -> void:
 	number_of_spaces = game_spaces.size()
 	SignalBus.tool_box_closed.connect(_on_tool_box_close)
 	SignalBus.effect_box_closed.connect(_on_effect_box_close)
+	SignalBus.reset_game.connect(_reset_game)
 	
 func _process(delta):
 	if run_emit_tool_space:
 		SignalBus.tool_space_landed.emit( randi_range(0,5) )
 		run_emit_tool_space = false
 	if run_emit_effect_space:
-		print('sending')
 		SignalBus.effect_space_landed.emit( randi_range(0,5) )
 		run_emit_effect_space = false
 	if pink_place <= 0:
@@ -46,8 +47,11 @@ func _process(delta):
 	if blue_place <= 0:
 		blue_place = 0
 	if SignalBus.geto_money <= 0:
+		SignalBus.out_of_game_money += SignalBus.in_game_money * 5
+		game_ended = true
 		win_screen.visible = true
 	if SignalBus.in_game_money <= 0:
+		game_ended = true
 		lose_screen.visible = true
 		 
 		
@@ -58,6 +62,8 @@ func _on_dice_dice_has_rolled(roll: Variant) -> void:
 	play_gojo_turn( roll )
 			
 func gojo_move( place ) -> void:
+	if game_ended:
+		return
 	var tween = create_tween()
 	print('gojo move')
 	tween.tween_property(pink_piece, "position", game_spaces[ place ].position,0.1 )
@@ -66,6 +72,8 @@ func gojo_move( place ) -> void:
 	await timer.timeout
 	
 func geto_move( place ) -> void:
+	if game_ended:
+		return
 	var tween = create_tween()
 	print('geto move')
 	tween.tween_property(blue_piece, "position", game_spaces[ place ].position, 0.1 )
@@ -173,9 +181,12 @@ func play_gojo_turn( roll ) -> void:
 				# Instance it
 				var effect = effect_box.instantiate()
 				# Add it
-				canvas_layer.add_child(effect)
+				if not game_ended:
+					canvas_layer.add_child(effect)
 				# Position it
 		elif game_spaces[ pink_place ].direction == Direction.SpaceType.WIN:
+			game_ended = true
+			SignalBus.out_of_game_money += SignalBus.in_game_money * 2
 			win_screen.visible = true
 		else:
 			if gojo_turn:
@@ -223,15 +234,23 @@ func play_geto_turn() -> void :
 				# Instance it
 				var effect = effect_box.instantiate()
 				# Add it
-				canvas_layer.add_child(effect)
+				if not game_ended:
+					canvas_layer.add_child(effect)
 				# Position it
 		elif game_spaces[ blue_place ].direction == Direction.SpaceType.WIN:
+			game_ended = true
 			lose_screen.visible = true
 		else:
 			blue_dice.can_click = true
 			red_dice.can_click = true
 			off_white_dice.can_click = true
 	
-	
+func _reset_game():
+	SignalBus.geto_money = 50
+	SignalBus.in_game_money = 15
+	pink_place = 0
+	blue_place = 0
+	geto_move(blue_place)
+	gojo_move(pink_place)
 	
 	

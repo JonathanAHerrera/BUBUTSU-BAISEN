@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://iq8cavyvuavf"]
+[gd_scene format=3 uid="uid://46ira3mnrrkd"]
+
+[ext_resource type="Script" uid="uid://heycvns8i547" path="res://scripts/win_screen.gd" id="1_ulig0"]
 
 [node name="WinScreen" type="Control" unique_id=915477520]
 layout_mode = 3
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ulig0")
 
 [node name="Background" type="ColorRect" parent="." unique_id=1193219662]
 layout_mode = 1
@@ -38,7 +41,6 @@ text = "You Win"
 [node name="WinnerLabel" type="Label" parent="Center/Box" unique_id=12852049]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Winner: P1"
 
 [node name="PlayAgainButton" type="Button" parent="Center/Box" unique_id=2122155890]
 layout_mode = 2
@@ -47,3 +49,6 @@ text = "Play Again"
 [node name="MenuButton" type="Button" parent="Center/Box" unique_id=2038508472]
 layout_mode = 2
 text = "Menu"
+
+[connection signal="button_down" from="Center/Box/PlayAgainButton" to="." method="_on_play_again_button_button_down"]
+[connection signal="button_down" from="Center/Box/MenuButton" to="." method="_on_menu_button_button_down"]
