@@ -33,6 +33,4 @@ alignment = 1
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=795991055]
 layout_mode = 2
-text = "You got balh balh blah
-Effect! Woohoo"
 horizontal_alignment = 1

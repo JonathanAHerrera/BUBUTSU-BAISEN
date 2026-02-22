@@ -1,12 +1,11 @@
 [gd_scene format=3 uid="uid://cp8mualk6xl8x"]
 
-[ext_resource type="PackedScene" uid="uid://cyyoxi1nfbeas" path="res://scenes/EffectPopUpBox.tscn" id="1_f0dke"]
+[ext_resource type="PackedScene" uid="uid://cyyoxi1nfbeas" path="res://scenes/ToolPopUpBox.tscn" id="1_f0dke"]
+[ext_resource type="Script" uid="uid://dhwffw3r411gv" path="res://scripts/yaoi_pop_up_box.gd" id="2_pi5yr"]
 [ext_resource type="Texture2D" uid="uid://bl3tcdgxb48pd" path="res://assets/Screenshot 2026-02-21 at 9.20.40 PM.png" id="2_vn56o"]
 
 [node name="ToolPopUpBox" unique_id=1769989029 instance=ExtResource("1_f0dke")]
-
-[node name="Label" parent="PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1034352926) index="0" unique_id=795991055]
-text = ""
+script = ExtResource("2_pi5yr")
 
 [node name="Screenshot20260221At9_20_40Pm" type="Sprite2D" parent="PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1034352926) index="1" unique_id=472773780]
 position = Vector2(193.875, 95.62499)

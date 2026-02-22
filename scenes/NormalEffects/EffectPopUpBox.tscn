@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bv3ixll3xcm5h"]
+
+[ext_resource type="PackedScene" uid="uid://cyyoxi1nfbeas" path="res://scenes/ToolPopUpBox.tscn" id="1_dl22t"]
+[ext_resource type="Script" uid="uid://dchhpa86jmf06" path="res://scripts/effect_pop_up_box.gd" id="2_e377j"]
+
+[node name="ToolPopUpBox" unique_id=1769989029 instance=ExtResource("1_dl22t")]
+script = ExtResource("2_e377j")

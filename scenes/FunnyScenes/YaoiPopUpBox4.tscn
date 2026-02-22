@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bfjtmpa1ew4ol"]
 
-[ext_resource type="PackedScene" uid="uid://cyyoxi1nfbeas" path="res://scenes/EffectPopUpBox.tscn" id="1_2mc8h"]
+[ext_resource type="PackedScene" uid="uid://cyyoxi1nfbeas" path="res://scenes/ToolPopUpBox.tscn" id="1_2mc8h"]
 [ext_resource type="Texture2D" uid="uid://bl3tcdgxb48pd" path="res://assets/Screenshot 2026-02-21 at 9.20.40 PM.png" id="2_6337u"]
 
 [node name="ToolPopUpBox" unique_id=1769989029 instance=ExtResource("1_2mc8h")]
