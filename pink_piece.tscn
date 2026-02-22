@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://byj4875ygyky0" path="res://scenes/dice.tscn" id="4_a3yu8"]
 [ext_resource type="PackedScene" uid="uid://bmnpmaofdwoi1" path="res://scenes/spot.tscn" id="4_k8nbr"]
 
-[node name="Main" type="Node2D" unique_id=464376003 node_paths=PackedStringArray("game_spaces")]
+[node name="Main" type="Node2D" unique_id=464376003 node_paths=PackedStringArray("game_spaces") groups=["card_effect"]]
 script = ExtResource("1_bxpt3")
 game_spaces = [NodePath("Node/Start"), NodePath("Node/Start2"), NodePath("Node/Start3"), NodePath("Node/Start4"), NodePath("Node/Start5"), NodePath("Node/Start6"), NodePath("Node/Start7"), NodePath("Node/Start8"), NodePath("Node/Start9"), NodePath("Node/Start10"), NodePath("Node/Start11"), NodePath("Node/Start12"), NodePath("Node/Start13"), NodePath("Node/Start14"), NodePath("Node/Start15"), NodePath("Node/Start16"), NodePath("Node/Start17")]
 

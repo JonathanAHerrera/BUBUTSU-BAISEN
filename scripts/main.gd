@@ -5,8 +5,7 @@ extends Node2D
 @onready var dice := $Dice
 @export var game_spaces : Array[Spot]
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
-#@onready var effect_pop_up_box : CenterContainer = $"."
-
+var run_emit := false
 
 
 
@@ -16,6 +15,11 @@ var number_of_spaces : int
 func _ready() -> void:
 	number_of_spaces = game_spaces.size()
 	
+func _process(delta):
+	if run_emit:
+		SignalBus.tool_space_landed.emit( randi_range(1,5) )
+		run_emit = false
+		
 
 func _on_dice_dice_has_rolled(roll: Variant) -> void:
 	# for testing
@@ -38,12 +42,14 @@ func _on_dice_dice_has_rolled(roll: Variant) -> void:
 					await move( place )
 		if game_spaces[ place - 1 ].direction == Direction.SpaceType.TOOL:
 			print('tool')
+			
+			run_emit = true
 			#Load it
 			var effect_box = preload("res://scenes/EffectPopUpBox.tscn")
 			#Instance it
 			var effect = effect_box.instantiate()
 			#Add it
-			add_child(effect)
+			canvas_layer.add_child(effect)
 			#Position it
 		if game_spaces[ place - 1 ].direction == Direction.SpaceType.EFFECT:
 			print('effect')
@@ -63,6 +69,3 @@ func move( place ) -> void:
 	tween.tween_property(pink_piece, "position", game_spaces[ place ].position, 1 )
 	timer.start()
 	await timer.timeout
-
-func _on_timer_timeout() -> void:
-	pass # Replace with function body.
