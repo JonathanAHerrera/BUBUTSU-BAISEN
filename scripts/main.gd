@@ -115,3 +115,7 @@ func _on_effect_box_close( money, spaces ) -> void:
 	
 	
 	
+
+
+func _on_texture_button_button_down() -> void:
+	pass # Replace with function body.

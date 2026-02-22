@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://byj4875ygyky0"]
 
-[ext_resource type="Texture2D" uid="uid://dpugj1ojkjf5n" path="res://assets/art/dice.png" id="1_27nyo"]
+[ext_resource type="Texture2D" uid="uid://dpugj1ojkjf5n" path="res://assets/art/dice.png" id="1_mg5ex"]
 [ext_resource type="Script" uid="uid://bakhhwxh6oys8" path="res://scripts/dice.gd" id="2_mg5ex"]
 
 [sub_resource type="Animation" id="Animation_27nyo"]
@@ -145,9 +145,11 @@ _data = {
 }
 
 [node name="Dice" type="Sprite2D" unique_id=357203752]
-position = Vector2(86, 61)
-texture = ExtResource("1_27nyo")
+position = Vector2(-62, 136)
+texture = ExtResource("1_mg5ex")
 hframes = 6
+region_enabled = true
+region_rect = Rect2(110, 115, 3105, 524)
 script = ExtResource("2_mg5ex")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=191012657]

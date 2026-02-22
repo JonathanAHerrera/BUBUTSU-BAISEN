@@ -6,13 +6,6 @@ extends Sprite2D
 signal dice_has_rolled( roll )
 
 
-func _unhandled_input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("ui_click") and can_click:
-		can_click = false
-		animation_player.play("roll")
-		timer.start()
-		
- 
 
 
 func _on_timer_timeout() -> void:
@@ -20,3 +13,10 @@ func _on_timer_timeout() -> void:
 	print( dice_roll )
 	animation_player.play( str( dice_roll ) )
 	emit_signal( "dice_has_rolled", dice_roll )
+
+
+func _on_texture_button_button_down() -> void:
+	if Input.is_action_just_pressed("ui_click") and can_click:
+		can_click = false
+		animation_player.play("roll")
+		timer.start()
