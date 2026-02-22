@@ -21,6 +21,10 @@
 [ext_resource type="PackedScene" uid="uid://b6jioqgiie5l" path="res://scenes/StartMenu.tscn" id="19_t48r6"]
 [ext_resource type="PackedScene" uid="uid://cvwm7jwr4l8vg" path="res://scenes/LoseScreen.tscn" id="20_o1od4"]
 [ext_resource type="PackedScene" uid="uid://46ira3mnrrkd" path="res://scenes/WinScreen.tscn" id="21_pou7b"]
+[ext_resource type="PackedScene" uid="uid://7b40mfrrf0un" path="res://scenes/PauseMenu.tscn" id="22_c08yw"]
+[ext_resource type="Texture2D" uid="uid://ngawrvslks72" path="res://assets/art/City 1.png" id="23_d6o6y"]
+[ext_resource type="Texture2D" uid="uid://bt05rrqfw677a" path="res://assets/art/City 2.png" id="24_qcym1"]
+[ext_resource type="Texture2D" uid="uid://cnbas705srl3h" path="res://assets/art/City 3.png" id="25_6xiqk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ngatk"]
 atlas = ExtResource("14_ngatk")
@@ -28,10 +32,12 @@ region = Rect2(58, 35, 235, 252)
 
 [node name="Main" type="Node2D" unique_id=464376003 node_paths=PackedStringArray("game_spaces") groups=["card_effect"]]
 script = ExtResource("1_bxpt3")
-game_spaces = [NodePath("Node/Start"), NodePath("Node/Start2"), NodePath("Node/Start3"), NodePath("Node/Start4"), NodePath("Node/Start5"), NodePath("Node/Start6"), NodePath("Node/Start7"), NodePath("Node/Start8"), NodePath("Node/Start9"), NodePath("Node/Start10"), NodePath("Node/Start11"), NodePath("Node/Start12"), NodePath("Node/Start13"), NodePath("Node/Start14"), NodePath("Node/Start15"), NodePath("Node/Start16"), NodePath("Node/Start17")]
+game_spaces = [NodePath("Node/Start"), NodePath("Node/Start2"), NodePath("Node/Start3"), NodePath("Node/Start4"), NodePath("Node/Start5"), NodePath("Node/Start6"), NodePath("Node/Start7")]
 effect_scenes = Array[PackedScene]([ExtResource("2_g1kpw"), ExtResource("3_slxww"), ExtResource("4_kw7oy"), ExtResource("5_ngatk"), ExtResource("6_pvhb2"), ExtResource("7_kfo5q")])
+game_ended = null
 
 [node name="Board" type="Sprite2D" parent="." unique_id=1451328302]
+visible = false
 position = Vector2(320, 180)
 texture = ExtResource("3_83al3")
 
@@ -161,6 +167,7 @@ text = "0"
 script = ExtResource("13_kw7oy")
 
 [node name="StartMenu" parent="CanvasLayer" unique_id=1396551517 instance=ExtResource("19_t48r6")]
+visible = false
 z_index = 50
 
 [node name="LoseScreen" parent="CanvasLayer" unique_id=915477520 instance=ExtResource("20_o1od4")]
@@ -170,6 +177,21 @@ z_index = 49
 [node name="WinScreen" parent="CanvasLayer" unique_id=1612274989 instance=ExtResource("21_pou7b")]
 visible = false
 z_index = 49
+
+[node name="PauseMenu" parent="CanvasLayer" unique_id=1589021251 instance=ExtResource("22_c08yw")]
+visible = false
+
+[node name="City1" type="Sprite2D" parent="." unique_id=449315040]
+position = Vector2(128, 484)
+texture = ExtResource("23_d6o6y")
+
+[node name="City2" type="Sprite2D" parent="." unique_id=914226009]
+position = Vector2(331, 484)
+texture = ExtResource("24_qcym1")
+
+[node name="City3" type="Sprite2D" parent="." unique_id=933039406]
+position = Vector2(534, 485)
+texture = ExtResource("25_6xiqk")
 
 [connection signal="dice_has_rolled" from="RedDie" to="." method="_on_dice_dice_has_rolled"]
 [connection signal="button_down" from="CanvasLayer/TextureButton" to="OffWhiteDie" method="_on_texture_button_button_down"]

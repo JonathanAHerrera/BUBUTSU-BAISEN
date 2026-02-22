@@ -6,6 +6,7 @@ extends Node2D
 @onready var lose_screen: Control = $CanvasLayer/LoseScreen
 @onready var win_screen: Control = $CanvasLayer/WinScreen
 @onready var start_menu: Control = $CanvasLayer/StartMenu
+@onready var pause_menu: Control = $CanvasLayer/PauseMenu
 
 
 
@@ -50,10 +51,22 @@ func _process(delta):
 		SignalBus.out_of_game_money += SignalBus.in_game_money * 5
 		game_ended = true
 		win_screen.visible = true
+		pause_menu.hide()
+		blue_dice.can_click = false
+		red_dice.can_click = false
+		off_white_dice.can_click = false
 	if SignalBus.in_game_money <= 0:
 		game_ended = true
 		lose_screen.visible = true
-		 
+		pause_menu.hide()
+		stop_dice()
+		
+		
+		
+func stop_dice():
+		blue_dice.can_click = false
+		red_dice.can_click = false
+		off_white_dice.can_click = false 
 		
 
 func _on_dice_dice_has_rolled(roll: Variant) -> void:
@@ -253,4 +266,70 @@ func _reset_game():
 	geto_move(blue_place)
 	gojo_move(pink_place)
 	
+	
+func resume_game():
+	get_tree().paused = false
+	pause_menu.hide()
+	
+func pause_game():
+	get_tree().paused = true
+	pause_menu.show()
+
+func reset_and_start():
+	get_tree().paused = false
+	
+	start_menu.hide()
+	win_screen.hide()
+	lose_screen.hide()
+	pause_menu.hide()
+	
+	gojo_turn = true
+	run_emit_tool_space = false
+	run_emit_effect_space = false
+	run_tool_close = false
+
+	pink_place = 0
+	blue_place = 0
+	if game_spaces.size() > 0:
+		pink_piece.position = game_spaces[0].position
+		blue_piece.position = game_spaces[0].position
+		
+	SignalBus.in_game_money = 5000
+	SignalBus.geto_money = 5000
+
+	label.call("_update_money", 0, true)
+
+	blue_dice.can_click = true
+	red_dice.can_click = true
+	off_white_dice.can_click = true
+	
+func _input(event):
+	if start_menu.visible or win_screen.visible or lose_screen.visible:
+		return
+
+	if event.is_action_pressed("pause"):
+		if get_tree().paused:
+			resume_game()
+		else:
+			pause_game()
+	
+func go_to_menu():
+	get_tree().paused = false
+	
+	win_screen.hide()
+	lose_screen.hide()
+	pause_menu.hide()
+	
+	start_menu.show()
+	
+	pink_place = 0
+	blue_place = 0
+	
+	if game_spaces.size() > 0:
+		pink_piece.position = game_spaces[0].position
+		blue_piece.position = game_spaces[0].position
+	
+	blue_dice.can_click = false
+	red_dice.can_click = false
+	off_white_dice.can_click = false
 	

@@ -52,11 +52,16 @@ text = "Bubutsu Baisen"
 [node name="Spacer" type="Control" parent="Center/Box" unique_id=1742806889]
 layout_mode = 2
 
-[node name="BuyIn" type="Button" parent="Center/Box" unique_id=2105992273]
+[node name="StartButton" type="Button" parent="Center/Box" unique_id=2105992273]
 layout_mode = 2
 text = "15 Band Buy in"
 script = ExtResource("4_kcs48")
 
+[node name="QuitButton" type="Button" parent="Center/Box" unique_id=997462725]
+layout_mode = 2
+text = "Quit"
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=852490069]
 
-[connection signal="button_down" from="Center/Box/BuyIn" to="." method="_on_buy_in_button_down"]
+[connection signal="button_down" from="Center/Box/StartButton" to="." method="_on_buy_in_button_down"]
+[connection signal="pressed" from="Center/Box/QuitButton" to="." method="_on_quit_button_pressed"]
