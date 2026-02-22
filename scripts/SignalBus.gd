@@ -12,6 +12,6 @@ var normalEffects = [
 	['Geto Money Spreads on you destryoing your reputation Move Backward 1!', 0, -1],
 	['Bitcoin goes up! Gain 10 Bands', 10, 0],
 	['You got that itch again, Lose 10 Bands', -10, 0],
-	['You slip in front of the hoes', 0, -5],
+	['You slip in front of the hoes. Move back 5 spaces', 0, -5],
 	['Your parlay hit gain 30 Bands', 30, 0],
 ]

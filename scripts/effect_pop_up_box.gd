@@ -17,7 +17,6 @@ func _input(event: InputEvent) -> void:
 		
 		
 func _change_text_effect( effect_card ):
-	print( "WE ARE CHANGING" )
 	set_effect_card = effect_card
 	label.text = SignalBus.normalEffects[ effect_card ][ 0 ]
 	

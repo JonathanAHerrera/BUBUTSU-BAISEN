@@ -13,7 +13,7 @@ var run_tool_close := false
 
 
 
-var place : int = 1
+var place : int = 0
 var number_of_spaces : int
 
 func _ready() -> void:
@@ -35,17 +35,16 @@ func _on_dice_dice_has_rolled(roll: Variant) -> void:
 	# for testing
 	roll = 1
 	while roll != 0:
-		await move( place )
 		place += 1
+		await move( place )
 		roll -= 1
 	if roll == 0:
-		if game_spaces[ place - 1 ].direction == Direction.SpaceType.BACK:
-			var two_spaces_back = place - 3
-			print('back')
+		if game_spaces[ place ].direction == Direction.SpaceType.BACK:
+			var two_spaces_back = place - 2
 			while place != two_spaces_back:
 					place -= 1
 					await move( place )
-		if game_spaces[ place - 1 ].direction == Direction.SpaceType.TOOL:
+		if game_spaces[ place ].direction == Direction.SpaceType.TOOL:
 			run_emit_tool_space = true
 			#Load it
 			var effect_box = preload("res://scenes/ToolPopUpBox.tscn")
@@ -54,9 +53,9 @@ func _on_dice_dice_has_rolled(roll: Variant) -> void:
 			#Add it
 			canvas_layer.add_child(effect)
 			#Position it
-		elif game_spaces[ place - 1 ].direction == Direction.SpaceType.EFFECT:
+		elif game_spaces[ place ].direction == Direction.SpaceType.EFFECT:
 			var odds := randi_range(1,10)
-			if odds >= 10:
+			if odds >= 11:
 				effect_scenes.shuffle()
 				#Load it
 				var tool_box = effect_scenes.front()
@@ -66,7 +65,6 @@ func _on_dice_dice_has_rolled(roll: Variant) -> void:
 				canvas_layer.add_child(tool)
 				#Position it
 			else:
-				print('effect normal')
 				run_emit_effect_space = true
 				# Load it
 				var effect_box = preload("res://scenes/NormalEffects/EffectPopUpBox.tscn")
@@ -83,6 +81,23 @@ func move( place ) -> void:
 	tween.tween_property(pink_piece, "position", game_spaces[ place ].position, 1 )
 	timer.start()
 	await timer.timeout
+
+func move_by_num_spaces( num_spaces ) -> void:
+	
+	var new_place = place + num_spaces
+	print( "curr place: " + str( place ) )
+	print( "num_spaces: " + str( num_spaces ) )
+	if new_place < place:
+		while num_spaces != 0 and (place - 1 >= 0) :
+			move( place - 1 )
+			place -= 1
+			num_spaces += 1
+	else:
+		while num_spaces != 0 and ( place < game_spaces.size() ) :
+			move( place + 1 )
+			place += 1
+			num_spaces -= 1
+	
 	
 func _on_tool_box_close( tool ) -> void:
 	await get_tree().process_frame
@@ -92,9 +107,11 @@ func _on_tool_box_close( tool ) -> void:
 	
 func _on_effect_box_close( money, spaces ) -> void:
 	await get_tree().process_frame
-	print('click allowed')
-	dice.can_click = true
 	label.call("_update_money", money)
+	if spaces != 0:
+		move_by_num_spaces( spaces )
+	dice.can_click = true
+	print( 'click allowed' )
 	
 	
 	
