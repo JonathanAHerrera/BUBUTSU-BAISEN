@@ -15,9 +15,9 @@
 [ext_resource type="Theme" uid="uid://cddh3712bf01f" path="res://assets/DefaultTheme.tres" id="12_slxww"]
 [ext_resource type="Script" uid="uid://tuvtkq3dlmmt" path="res://scripts/money_label.gd" id="13_kw7oy"]
 [ext_resource type="Script" uid="uid://bp0hsf2m2rw2n" path="res://scenes/off_white_dice.gd" id="13_rm48y"]
-[ext_resource type="Texture2D" uid="uid://dfidgbgpuk11a" path="res://assets/art/DieButton.jpeg" id="14_ngatk"]
 [ext_resource type="Script" uid="uid://b11gd26ygky60" path="res://scenes/blue_dice.gd" id="14_rm48y"]
 [ext_resource type="Script" uid="uid://dk1cdr6lnyqag" path="res://scenes/red_dice.gd" id="15_w2lmc"]
+[ext_resource type="Texture2D" uid="uid://kfsq802p46g6" path="res://assets/art/Corner_Dice_1.png" id="16_c08yw"]
 [ext_resource type="PackedScene" uid="uid://b6jioqgiie5l" path="res://scenes/StartMenu.tscn" id="19_t48r6"]
 [ext_resource type="PackedScene" uid="uid://cvwm7jwr4l8vg" path="res://scenes/LoseScreen.tscn" id="20_o1od4"]
 [ext_resource type="PackedScene" uid="uid://46ira3mnrrkd" path="res://scenes/WinScreen.tscn" id="21_pou7b"]
@@ -26,15 +26,14 @@
 [ext_resource type="Texture2D" uid="uid://bt05rrqfw677a" path="res://assets/art/City 2.png" id="24_qcym1"]
 [ext_resource type="Texture2D" uid="uid://cnbas705srl3h" path="res://assets/art/City 3.png" id="25_6xiqk"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ngatk"]
-atlas = ExtResource("14_ngatk")
-region = Rect2(58, 35, 235, 252)
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6o6y"]
+atlas = ExtResource("16_c08yw")
+region = Rect2(7, 1, 762, 875)
 
 [node name="Main" type="Node2D" unique_id=464376003 node_paths=PackedStringArray("game_spaces") groups=["card_effect"]]
 script = ExtResource("1_bxpt3")
 game_spaces = [NodePath("Node/Start"), NodePath("Node/Start2"), NodePath("Node/Start3"), NodePath("Node/Start4"), NodePath("Node/Start5"), NodePath("Node/Start6"), NodePath("Node/Start7")]
 effect_scenes = Array[PackedScene]([ExtResource("2_g1kpw"), ExtResource("3_slxww"), ExtResource("4_kw7oy"), ExtResource("5_ngatk"), ExtResource("6_pvhb2"), ExtResource("7_kfo5q")])
-game_ended = null
 
 [node name="Board" type="Sprite2D" parent="." unique_id=1451328302]
 visible = false
@@ -143,7 +142,7 @@ offset_left = 496.0
 offset_top = 233.0
 offset_right = 660.5663
 offset_bottom = 390.0
-texture_normal = SubResource("AtlasTexture_ngatk")
+texture_normal = SubResource("AtlasTexture_d6o6y")
 ignore_texture_size = true
 stretch_mode = 0
 
