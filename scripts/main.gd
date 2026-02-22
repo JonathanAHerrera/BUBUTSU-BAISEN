@@ -24,7 +24,7 @@ func _process(delta):
 
 func _on_dice_dice_has_rolled(roll: Variant) -> void:
 	# for testing
-	roll = 1
+	#roll = 1
 	while roll != 0:
 		await move( place )
 		place += 1
@@ -52,7 +52,7 @@ func _on_dice_dice_has_rolled(roll: Variant) -> void:
 			#Add it
 			canvas_layer.add_child(effect)
 			#Position it
-		if game_spaces[ place - 1 ].direction == Direction.SpaceType.EFFECT:
+		elif game_spaces[ place - 1 ].direction == Direction.SpaceType.EFFECT:
 			effect_scenes.shuffle()
 			#Load it
 			var effect_box = effect_scenes.front()
@@ -61,6 +61,8 @@ func _on_dice_dice_has_rolled(roll: Variant) -> void:
 			#Add it
 			canvas_layer.add_child(effect)
 			#Position it
+		else:
+			SignalBus.can_click = true
 			
 			
 		

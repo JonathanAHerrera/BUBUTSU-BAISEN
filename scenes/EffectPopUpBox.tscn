@@ -11,6 +11,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_l2wfk")
 
+[node name="Timer" type="Timer" parent="." unique_id=1277892852]
+wait_time = 0.5
+one_shot = true
+
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=2055506174]
 custom_minimum_size = Vector2(400, 200)
 layout_mode = 2

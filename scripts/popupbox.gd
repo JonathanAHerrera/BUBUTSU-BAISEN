@@ -1,6 +1,8 @@
 extends CenterContainer
 @onready var label: Label = $PanelContainer/MarginContainer/VBoxContainer/Label
 var tool_cards = [ "Sharingan", "Glock", "Piece of lint", "Student Loan Debt", "Infinity Stone", "Donut"]
+@onready var timer: Timer = $Timer
+@onready var panel_container: PanelContainer = $PanelContainer
 
 
 func _ready() -> void:
@@ -11,7 +13,13 @@ func _on_button_pressed() -> void:
 	
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_click"):
+		panel_container.hide()
+		timer.start()
+		await timer.timeout
+		print('freed')
 		queue_free()
+		SignalBus.can_click = true
+		
 		
 func _change_text( tool_card ):
 	print( "WE ARE CHANGING" )

@@ -144,7 +144,7 @@ _data = {
 &"roll": SubResource("Animation_oi81l")
 }
 
-[node name="Dice" type="Sprite2D" unique_id=357203752 groups=["card_effect"]]
+[node name="Dice" type="Sprite2D" unique_id=357203752]
 position = Vector2(86, 61)
 texture = ExtResource("1_27nyo")
 hframes = 6
