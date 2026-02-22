@@ -4,6 +4,7 @@ extends Node2D
 @onready var timer := $Timer
 @onready var dice := $Dice
 @export var game_spaces : Array[Spot]
+@export var effect_scenes : Array[PackedScene]
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
 var run_emit := false
 
@@ -23,7 +24,7 @@ func _process(delta):
 
 func _on_dice_dice_has_rolled(roll: Variant) -> void:
 	# for testing
-	roll = 6
+	roll = 1
 	while roll != 0:
 		await move( place )
 		place += 1
@@ -52,9 +53,9 @@ func _on_dice_dice_has_rolled(roll: Variant) -> void:
 			canvas_layer.add_child(effect)
 			#Position it
 		if game_spaces[ place - 1 ].direction == Direction.SpaceType.EFFECT:
-			print('effect')
+			effect_scenes.shuffle()
 			#Load it
-			var effect_box = preload("res://scenes/EffectPopUpBox.tscn")
+			var effect_box = effect_scenes.front()
 			#Instance it
 			var effect = effect_box.instantiate()
 			#Add it

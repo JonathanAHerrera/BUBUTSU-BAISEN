@@ -2,13 +2,20 @@
 
 [ext_resource type="Script" uid="uid://b15kg5avejg8t" path="res://scripts/main.gd" id="1_bxpt3"]
 [ext_resource type="Texture2D" uid="uid://d27wfeewo70lu" path="res://assets/pink piece.png" id="1_kcba3"]
+[ext_resource type="PackedScene" uid="uid://cp8mualk6xl8x" path="res://scenes/FunnyScenes/YaoiPopUpBox.tscn" id="2_g1kpw"]
 [ext_resource type="Texture2D" uid="uid://cvrr2tdxo1upv" path="res://assets/art/board.png" id="3_83al3"]
+[ext_resource type="PackedScene" uid="uid://811pa8fignag" path="res://scenes/FunnyScenes/YaoiPopUpBox2.tscn" id="3_slxww"]
 [ext_resource type="PackedScene" uid="uid://byj4875ygyky0" path="res://scenes/dice.tscn" id="4_a3yu8"]
 [ext_resource type="PackedScene" uid="uid://bmnpmaofdwoi1" path="res://scenes/spot.tscn" id="4_k8nbr"]
+[ext_resource type="PackedScene" uid="uid://pk3211ye3uvn" path="res://scenes/FunnyScenes/YaoiPopUpBox3.tscn" id="4_kw7oy"]
+[ext_resource type="PackedScene" uid="uid://bfjtmpa1ew4ol" path="res://scenes/FunnyScenes/YaoiPopUpBox4.tscn" id="5_ngatk"]
+[ext_resource type="PackedScene" uid="uid://k86cs0o4y5o7" path="res://scenes/FunnyScenes/YaoiPopUpBox5.tscn" id="6_pvhb2"]
+[ext_resource type="PackedScene" uid="uid://c4hpakmq46lwy" path="res://scenes/FunnyScenes/YaoiPopUpBox6.tscn" id="7_kfo5q"]
 
 [node name="Main" type="Node2D" unique_id=464376003 node_paths=PackedStringArray("game_spaces") groups=["card_effect"]]
 script = ExtResource("1_bxpt3")
 game_spaces = [NodePath("Node/Start"), NodePath("Node/Start2"), NodePath("Node/Start3"), NodePath("Node/Start4"), NodePath("Node/Start5"), NodePath("Node/Start6"), NodePath("Node/Start7"), NodePath("Node/Start8"), NodePath("Node/Start9"), NodePath("Node/Start10"), NodePath("Node/Start11"), NodePath("Node/Start12"), NodePath("Node/Start13"), NodePath("Node/Start14"), NodePath("Node/Start15"), NodePath("Node/Start16"), NodePath("Node/Start17")]
+effect_scenes = [ExtResource("2_g1kpw"), ExtResource("3_slxww"), ExtResource("4_kw7oy"), ExtResource("5_ngatk"), ExtResource("6_pvhb2"), ExtResource("7_kfo5q")]
 
 [node name="Board" type="Sprite2D" parent="." unique_id=1451328302]
 position = Vector2(320, 180)
@@ -27,6 +34,7 @@ position = Vector2(64, 161)
 
 [node name="Start2" parent="Node" unique_id=762888996 instance=ExtResource("4_k8nbr")]
 position = Vector2(134, 158)
+direction = 3
 
 [node name="Start3" parent="Node" unique_id=377897363 instance=ExtResource("4_k8nbr")]
 position = Vector2(192, 158)
@@ -47,6 +55,7 @@ direction = 2
 
 [node name="Start8" parent="Node" unique_id=292664461 instance=ExtResource("4_k8nbr")]
 position = Vector2(516, 163)
+direction = 3
 
 [node name="Start9" parent="Node" unique_id=1537698590 instance=ExtResource("4_k8nbr")]
 position = Vector2(517, 223)
@@ -61,6 +70,7 @@ direction = 2
 
 [node name="Start12" parent="Node" unique_id=1094675348 instance=ExtResource("4_k8nbr")]
 position = Vector2(385, 288)
+direction = 3
 
 [node name="Start13" parent="Node" unique_id=1526964276 instance=ExtResource("4_k8nbr")]
 position = Vector2(321, 290)

@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://c4hpakmq46lwy"]
+
+[ext_resource type="PackedScene" uid="uid://cyyoxi1nfbeas" path="res://scenes/EffectPopUpBox.tscn" id="1_k6dic"]
+[ext_resource type="Texture2D" uid="uid://bl3tcdgxb48pd" path="res://assets/Screenshot 2026-02-21 at 9.20.40 PM.png" id="2_2mlif"]
+
+[node name="ToolPopUpBox" unique_id=1769989029 instance=ExtResource("1_k6dic")]
+
+[node name="Label" parent="PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1034352926) index="0" unique_id=795991055]
+text = ""
+
+[node name="Screenshot20260221At9_20_40Pm" type="Sprite2D" parent="PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1034352926) index="1" unique_id=472773780]
+position = Vector2(310.00003, 32.624992)
+scale = Vector2(0.14920072, 0.067078374)
+texture = ExtResource("2_2mlif")

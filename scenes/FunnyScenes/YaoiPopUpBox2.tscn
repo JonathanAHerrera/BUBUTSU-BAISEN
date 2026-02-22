@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://811pa8fignag"]
+
+[ext_resource type="PackedScene" uid="uid://cp8mualk6xl8x" path="res://scenes/FunnyScenes/YaoiPopUpBox.tscn" id="1_ucudq"]
+
+[node name="ToolPopUpBox" unique_id=1769989029 instance=ExtResource("1_ucudq")]
+
+[node name="Screenshot20260221At9_20_40Pm" parent="PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1034352926) index="1" unique_id=472773780]
+position = Vector2(340.00003, 95.62499)
+scale = Vector2(0.09591475, 0.17440376)
