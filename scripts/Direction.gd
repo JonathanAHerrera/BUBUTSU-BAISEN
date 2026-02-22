@@ -5,5 +5,6 @@ enum SpaceType {
 	BLANK,
 	BACK,
 	TOOL,
-	EFFECT
+	EFFECT,
+	WIN,
 }

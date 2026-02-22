@@ -3,6 +3,11 @@ extends Node2D
 @onready var pink_piece : Sprite2D = $PinkPiece
 @onready var blue_piece: Sprite2D = $BluePiece
 
+@onready var lose_screen: Control = $CanvasLayer/LoseScreen
+@onready var win_screen: Control = $CanvasLayer/WinScreen
+@onready var start_menu: Control = $CanvasLayer/StartMenu
+
+
 
 @onready var timer := $Timer
 @onready var red_dice := $RedDie
@@ -40,6 +45,11 @@ func _process(delta):
 		pink_place = 0
 	if blue_place <= 0:
 		blue_place = 0
+	if SignalBus.geto_money <= 0:
+		win_screen.visible = true
+	if SignalBus.in_game_money <= 0:
+		lose_screen.visible = true
+		 
 		
 
 func _on_dice_dice_has_rolled(roll: Variant) -> void:
@@ -165,6 +175,8 @@ func play_gojo_turn( roll ) -> void:
 				# Add it
 				canvas_layer.add_child(effect)
 				# Position it
+		elif game_spaces[ pink_place ].direction == Direction.SpaceType.WIN:
+			win_screen.visible = true
 		else:
 			if gojo_turn:
 				gojo_turn = false
@@ -213,6 +225,8 @@ func play_geto_turn() -> void :
 				# Add it
 				canvas_layer.add_child(effect)
 				# Position it
+		elif game_spaces[ blue_place ].direction == Direction.SpaceType.WIN:
+			lose_screen.visible = true
 		else:
 			blue_dice.can_click = true
 			red_dice.can_click = true

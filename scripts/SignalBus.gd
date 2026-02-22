@@ -15,10 +15,10 @@ var in_game_money = 15
 var geto_money = 50
 
 var normalEffects = [
-	['You see a child selling hot cheetos and feel inspired by his hustle mentality. Move Forward 1!', 0, 1],
-	['Geto Money Spreads on you destryoing your reputation Move Backward 1!', 0, -1],
-	['Bitcoin goes up! Gain 10 Bands', 10, 0],
-	['You got that itch again, Lose 10 Bands', -10, 0],
-	['You slip in front of the hoes. Move back 5 spaces', 0, -5],
-	['Your parlay hit gain 30 Bands', 30, 0],
+	['You see a child selling hot cheetos and feel inspired by his hustle mentality. Move Forward 1!', -15, 1],
+	['Geto Money Spreads on you destryoing your reputation Move Backward 1!', -15, -1],
+	['Bitcoin goes up! Gain 10 Bands', -15, 0],
+	['You got that itch again, Lose 10 Bands', -15, 0],
+	['You slip in front of the hoes. Move back 5 spaces', -15, -5],
+	['Your parlay hit gain 30 Bands', -15, 0],
 ]
